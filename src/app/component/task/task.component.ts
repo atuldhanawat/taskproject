@@ -54,6 +54,7 @@ export class TaskComponent implements OnInit {
         ];
         this.minStartDate=new Date();
     }
+    //function return to filter record
     filter(){
         this.tasks=this.originaltasks;
         if(typeof this.filterIsLeadChecked!='undefined' && this.filterIsLeadChecked[0]=="true"){
@@ -73,17 +74,17 @@ export class TaskComponent implements OnInit {
         }
         
     }
+    //function return to maintain add dialog box visibility
     showDialogToAdd() {
         this.newTask = true;
         this.task = new TaskObj();
         this.displayDialog = true;
     }
+    //function return to save record in existing json variable
     save() {
 
         const originaltasks = [...this.originaltasks];
-        //this.task.isLeader=(typeof this.task.isLeader!='undefined' && this.task.isLeader[0]=='true')?true:false;
-        //this.task.isCompleted=(typeof this.task.isCompleted!='undefined' && this.task.isCompleted[0]=='true')?true:false;
-       
+        
         if (this.newTask) {
             originaltasks.push(this.task);
         } else {
@@ -97,6 +98,7 @@ export class TaskComponent implements OnInit {
         this.task = null;
         this.displayDialog = false;
     }
+    //function to delete record from existing array
     delete() {
         const index = this.findSelectedTaskIndex();
         this.originaltasks = this.originaltasks.filter((val, i) => i !== index);
@@ -104,6 +106,7 @@ export class TaskComponent implements OnInit {
         this.task = null;
         this.displayDialog = false;
     }
+    //function to capture event from select row
     onRowSelect(event) {
         this.newTask = false;
         this.task = {...event.data};
@@ -111,8 +114,8 @@ export class TaskComponent implements OnInit {
         this.task.end=new Date(this.task.end);
         this.displayDialog = true;
     }
+    //function writen to find the select record index
     findSelectedTaskIndex(): number {
-        console.log(this.selectedTask);
         return this.originaltasks.indexOf(this.selectedTask);
     }
 }
