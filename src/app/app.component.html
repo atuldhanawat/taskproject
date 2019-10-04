@@ -1,0 +1,16 @@
+<div class="loading-overlay" *ngIf="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Task Project</span>
+      <span class="md-icon-spacer"></span>
+      <a mat-button   routerLink="/home" routerLinkActive="primary">Home</a>
+      <a mat-button  routerLink="/task" routerLinkActive="primary">Task</a>
+      <a mat-button  routerLink="/calendar" routerLinkActive="primary">Calendar</a>
+      <span class="md-icon-spacer"></span>
+      <mat-icon class="md-icon-icon" aria-hidden="false" aria-label="Example heart icon"  matBadge="{{totalCompletedTask}}" matBadgeColor="warn">notification_important</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+<router-outlet></router-outlet>
+<notifier-container></notifier-container>

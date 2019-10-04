@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+.ui-dialog-content.ui-widget-content{
+    height: 100%;
+}
+.ui-calendar .ui-datepicker{
+    top:auto !important;
+}
+.ui-paginator-bottom.ui-paginator{
+    text-align: right;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.md-icon-icon {
+    padding: 0 14px;
+  }
+  
+.md-icon-spacer {
+    flex: 1 1 auto;
+}
+
+a.mat-button.mat-button-base.primary {
+    color: coral;
+}

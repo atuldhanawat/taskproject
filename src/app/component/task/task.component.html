@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="container">
+        <mat-toolbar>
+                    <span>Filter:</span>
+                    <div class="ui-g-1"><label for="type">Type</label></div>
+                    <div class="ui-g-2"><p-dropdown  [options]="taskType"  [(ngModel)]="filterTaskType"  (onChange)="filter()"></p-dropdown></div> 
+                    <div class="ui-g-2"><label for="assignto">Is Lead</label></div>
+                    <div class="ui-g-1"><p-checkbox name="isLeadChecked" value="true" [(ngModel)]="filterIsLeadChecked" (onChange)="filter()"></p-checkbox></div>   
+        </mat-toolbar>
+        <mat-toolbar>
+                    <span>Tasks</span>
+                    <span class="md-icon-spacer"></span> 
+                    <button type="button" pButton icon="pi pi-plus" (click)="showDialogToAdd()" label="Add"></button>
+        </mat-toolbar> 
+        <p-table [columns]="columns" [value]="tasks" selectionMode="single"  [(selection)]="selectedTask" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="10">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{col.field=='start' || col.field=='end' ? (rowData[col.field] | date)  : rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+
+        <p-dialog header="Task" [(visible)]="displayDialog"  [responsive]="true" showEffect="fade" [modal]="true" [closable]="true" [width]="700"  [style]="{width: '300px', height: '320px'}">
+            <div class="ui-g ui-fluid" *ngIf="task"  >
+                <div class="ui-g-4"><label for="text">Text</label></div>
+                <div class="ui-g-8"><input pInputText id="text" [(ngModel)]="task.text" /></div> 
+                <div class="ui-g-4"><label for="creator">Creator</label></div>
+                <div class="ui-g-8"><input pInputText id="creator" [(ngModel)]="task.creator" /></div> 
+                <div class="ui-g-4"><label for="startdate">Start Date</label></div>
+                <div class="ui-g-8">
+                    <p-calendar [(ngModel)]="task.start"   dateFormat="yy/mm/dd"></p-calendar>
+                </div>
+                <div class="ui-g-4"><label for="enddate">End Date</label></div>
+                <div class="ui-g-8">
+                    <p-calendar [(ngModel)]="task.end"   dateFormat="yy/mm/dd"></p-calendar>
+                </div>
+                <div class="ui-g-4"><label for="type">Type</label></div>
+                <div class="ui-g-8"><p-dropdown id="type" [options]="taskType" [(ngModel)]="task.isGlobal"></p-dropdown></div> 
+                <div class="ui-g-4"><label for="createdby">Created By</label></div>
+                <div class="ui-g-8"><p-dropdown id="createdby" [options]="createdBy" [(ngModel)]="task.isLeader"></p-dropdown></div> 
+                <div class="ui-g-4"><label for="taskStatus">Status</label></div>
+                <div class="ui-g-8"><p-dropdown id="taskStatus" [options]="taskStatus" [(ngModel)]="task.isCompleted"></p-dropdown></div>
+                
+            </div>
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                    <button type="button" pButton icon="pi pi-times" (click)="delete()" label="Delete"></button>
+                    <button type="button" pButton icon="pi pi-check" (click)="save()" label="Save"></button>
+                </div>
+            </p-footer>
+        </p-dialog>
+    </div>
+</div>

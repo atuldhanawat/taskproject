@@ -1,0 +1,17 @@
+{
+    "type": [
+        {"label": "Select Type", "value": ""},
+        {"label": "Global", "value": true},
+        {"label": "Personal", "value": false}
+    ],
+    "createdBy": [
+        {"label": "Select Type", "value": ""},
+        {"label": "Employee", "value": false},
+        {"label": "Team Lead", "value": true}
+    ],
+    "status": [
+        {"label": "Select Type", "value": ""},
+        {"label": "Completed", "value": true},
+        {"label": "In-Complete", "value": false}
+    ]
+}

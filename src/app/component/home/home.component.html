@@ -1,0 +1,63 @@
+
+        <mat-toolbar>
+                    <span>Global Task</span>
+        </mat-toolbar> 
+        <p-table [columns]="columns" [value]="gtasks" selectionMode="single" [paginator]="true" rows="10">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+        <mat-divider></mat-divider>
+        <mat-toolbar>
+                        <span>Personal Task</span>
+            </mat-toolbar> 
+            <p-table [columns]="columns" [value]="ptasks" selectionMode="single" [paginator]="true" rows="10">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+    
+            </p-table>
+            <mat-divider></mat-divider>
+        <mat-toolbar>
+                        <span>Team Lead Task</span>
+            </mat-toolbar> 
+            <p-table [columns]="columns" [value]="tltasks" selectionMode="single" [paginator]="true" rows="10">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+    
+            </p-table>
